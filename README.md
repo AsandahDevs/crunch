@@ -115,18 +115,21 @@ npm run preview            # Preview production build
 ### Local Development (`.env`)
 ```env
 VITE_TMDB_API_KEY=your_tmdb_api_key_here
+VITE_IMAGE_BASE_URL=https://image.tmdb.org/t/p/w500
 VITE_APP_ENV=development
 ```
 
 ### Staging (`.env.staging`)
 ```env
 VITE_TMDB_API_KEY=your_staging_api_key_here
+VITE_IMAGE_BASE_URL=https://image.tmdb.org/t/p/w500
 VITE_APP_ENV=staging
 ```
 
 ### Production (`.env.production`)
 ```env
 VITE_TMDB_API_KEY=your_production_api_key_here
+VITE_IMAGE_BASE_URL=https://image.tmdb.org/t/p/w500
 VITE_APP_ENV=production
 ```
 

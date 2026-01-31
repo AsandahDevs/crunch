@@ -13,6 +13,7 @@ services:
     environment:
       - NODE_ENV=development
       - VITE_TMDB_API_KEY=${VITE_TMDB_API_KEY}
+      - VITE_IMAGE_BASE_URL=${VITE_IMAGE_BASE_URL}
       - VITE_APP_ENV=development
     restart: unless-stopped
     develop:

@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # Development service
+  crunch-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_TMDB_API_KEY=${VITE_TMDB_API_KEY}
+      - VITE_APP_ENV=development
+    restart: unless-stopped
+    develop:
+      watch:
+        - path: ./src
+          action: sync
+          target: /app/src
+        - path: ./public
+          action: sync
+          target: /app/public
+        - path: ./package.json
+          action: rebuild
+        - path: ./tsconfig.json
+          action: rebuild
+        - path: ./vite.config.ts
+          action: rebuild
+
+  # Production service (uses Docker secrets)
+  crunch-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - VITE_TMDB_API_KEY=/run/secrets/api_key
+      - VITE_APP_ENV=production
+    secrets:
+      - api_key
+    restart: unless-stopped
+    profiles:
+      - prod
+
+volumes:
+  node_modules:
+
+secrets:
+  api_key:
+    file: ./secret.txt

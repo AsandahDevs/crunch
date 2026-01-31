@@ -1,0 +1,59 @@
+# Git
+.git
+.gitignore
+
+# Environment variables (security - never include in Docker image)
+.env
+.env.local
+.env.*.local
+.env.staging
+.env.production
+secret.txt
+
+# Dependencies (will be installed in Docker)
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Build outputs (will be built in Docker)
+dist
+dist-ssr
+build
+.tsc-cache
+
+# IDE and Editor configs
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# CI/CD
+.github
+.gitlab-ci.yml
+.circleci
+
+# Testing
+coverage
+.nyc_output
+
+# Docker
+Dockerfile
+Dockerfile.dev
+docker-compose.yml
+docker-compose*.yml
+.dockerignore
+
+# Documentation
+README.md
+docs
+*.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp

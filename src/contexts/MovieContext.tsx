@@ -4,15 +4,13 @@ const MovieContext = createContext<any>(null);
 
 export const useMovieContext = () =>  useContext(MovieContext);
 export const MovieProvider = ({children}: {children: React.ReactNode}) => {
-    const [favorites,setFavorites] = useState<any[]>([]);
-
-    useEffect(() => {
+    // Initialize state from localStorage immediately
+    const [favorites, setFavorites] = useState<any[]>(() => {
         const storedFavorites = localStorage.getItem('favorites');
-        if (storedFavorites) {
-            setFavorites(JSON.parse(storedFavorites));
-        }
-    }, []);
+        return storedFavorites ? JSON.parse(storedFavorites) : [];
+    });
 
+    // Persist to localStorage whenever favorites change
     useEffect(() => {
         localStorage.setItem('favorites', JSON.stringify(favorites));
     }, [favorites]);

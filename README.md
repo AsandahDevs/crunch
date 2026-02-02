@@ -277,6 +277,11 @@ export default defineConfig([
 - Check `VITE_TMDB_API_KEY` is set
 - Review browser console for environment variable logs
 
+## Deployment
+
+Run the following commands to ensure successful deployment of your code changes on github pages:
+`npm run deploy`
+
 ## License
 
 MIT
